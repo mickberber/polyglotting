@@ -6,6 +6,7 @@ Write, in a file called mario.c in your ~/workspace/pset1 directory, a program t
 
 */
 #include <stdio.h>
+#include <string.h>
 
 int checker(int i) 
 {
@@ -19,19 +20,43 @@ int checker(int i)
 
 int getinput(void) 
 {
+    //inits as an array
     int arr[BUFSIZ];
-    printf("Height:\n");
+    printf("Height: ");
     scanf("%d", arr);
+    //take 1st element of input array && use checker for 
+    //determining if height is acceptable
     int newnum = arr[0];
     if(checker(newnum)) {
         return newnum;
     }
+
     return getinput();
+}
+
+int printHeight(int i, int k) {
+    while(i > 0) {
+        printf(" ");
+        i--;
+    }
+    while(k > 0) {
+        printf("#");
+        k--;
+    }
+    return 0;
 }
 
 int main(void) 
 {
     int num = getinput();
-
-    printf("%d\n", num);
+    int total = num + 1;
+    int whtspc = total - 2;
+    int pounds = total - whtspc;
+    while(whtspc >= 0) {
+        printHeight(whtspc, pounds);
+        printf("\n");
+        whtspc--;
+        pounds++;
+    }
+    return 0;
 }
