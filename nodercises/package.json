@@ -1,0 +1,29 @@
+{
+  "name": "nodercise",
+  "version": "1.0.0",
+  "description": "A Node.js Exercises repository for personal review",
+  "main": "asyncIO.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mickberber/nodercises.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mickberber/nodercises/issues"
+  },
+  "homepage": "https://github.com/mickberber/nodercises#readme",
+  "dependencies": {
+    "async": "^2.0.0-rc.5",
+    "concat-stream": "^1.5.1",
+    "request": "^2.72.0",
+    "split": "^1.0.0",
+    "through2": "^2.0.1",
+    "through2-map": "^2.0.0",
+    "trumpet": "^1.7.2",
+    "websocket-stream": "^3.1.0"
+  }
+}

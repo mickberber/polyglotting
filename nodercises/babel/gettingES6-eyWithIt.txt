@@ -1,0 +1,170 @@
+#gettingES6-eyWithIt
+
+WILL SMITH GIF
+
+In my effort to continue my education, I am going to write about ES6.
+
+Below is an example of a
+
+template string.
+
+`
+var string = process.argv[2];
+
+console.log('Hello ' + `${string}`);
+`
+It seems to work like a 'toString' method, which when used like this, can lead to mush more elegant code.
+
+
+#Constructing a Class
+
+The class constructor helps make writing classes actually feel like youre writing a class. in the past, having to write a class by attaching constantly throguh prototypes always feels/felt hacky
+
+`
+class Character {
+  constructor(x,y) {
+    this.x = x;
+    this.y = y;
+    this.health_ = 100;
+  }
+
+  damage() {
+    this.health_ = this.health_ - 10;
+  }
+
+  getHealth() {
+    return this.health_;
+  }
+
+  toString() {
+    return 'x: ' + this.x + ' y: ' + this.y + ' health: ' + this.getHealth();
+  }
+
+}
+`
+
+In this case we have made a very minimal version of a game character with health property
+A huge difference here, is that when writing a function to become a method inside a class, is lack of the constant use of the this keyword
+
+I like everyone who has gone through learning JS has at one point wanted to destroy the keyword this, so I don't miss is and can really appreciate the time the class constructor is saving
+You can see that while writing ES6 care was taken in making ES6 classes intuitive to write and understand on first glance
+
+#EXTENDING A CLASS
+class Player extends Character {
+  constructor(x, y, name) {
+    super(x, y);
+    this.name = name;
+  }
+  move(dx, dy) {
+    this.x += dx;
+    this.y += dy;
+  }
+  toString() {
+    return "name: " + this.name + " "+ super.toString();
+  }
+}
+
+is lovely and amazingly easy. it follows the same structure as class construction, and accessing any parent method can be accomplished by using the 'super' keyword
+
+super this, super that, super hit me with a whiffle ball bat
+
+Modules!
+these are exciting for the fact that they help your application only require the bare minimum of things it needs to run.
+
+With a traditional require statement, an entire file/module is imported even though only one method may be needed.
+
+Now with ES6 it allows us to only require the bare minimum of what we need to import with less application bloat.
+
+new keywords include 'import' and 'export'
+
+instead of require, import must be used when export is being used in a Modules
+
+Example import statement. The imported values can be called upon with the same names they were imported with.
+
+`import { PI, sqrt, square } from './math';`
+
+Example export statements..
+
+`
+export const PI = 3.141592;
+
+function _sqrt(s, x, last) {
+    return x != last ? _sqrt(s, (x + s / x) / 2.0, x) : x;
+}
+
+export funsction sqrt(s) {
+  return _sqrt(s, s/2.0, 0.0);
+}
+
+export function square(x) {
+  return x * x;
+}
+`
+
+#Exporting Default
+
+This feels just like module.exports in common js. When you import a module that has been exported using the `export default`, you get the whole object, and you don't have to know the name of it.
+
+
+Example of a file using export default
+`
+const PI = 3.141592;
+
+function _sqrt(s, x, last) {
+    return x != last ? _sqrt(s, (x + s / x) / 2.0, x) : x;
+}
+
+function sqrt(s) {
+  return _sqrt(s, s/2.0, 0.0);
+}
+
+function square(x) {
+  return x * x;
+}
+
+export default {
+  PI: PI,
+  sqrt: sqrt,
+  square: square
+ };
+`
+
+BLOCK SCOPE // LET // CONST
+
+CONST
+example use:
+`const str = 'string';`
+Variables declared with the const keyword are immutable, aka they cannot be changed
+
+LET
+Only available inside of their respective blocks(HENCE THE NAME BLOCK SCOPE) of curly braces
+
+Variables are now preferred to be created with let and const because they make it harder to leak variables to outer scopes
+
+
+//Exercise #7
+//Expressions can now be passed as keys for objects
+
+`obj[3 + 2] = 'example';`
+
+
+Exercise #8
+Symbol Iterators. Kinda Meh. I'd rather GENERATOR
+
+Exercise #9 GENERATORS
+kind of like for loops with a return value that keep running
+
+
+Excersice #10
+Destructuring is cool because you can access values in objects and arrays with a 'map' to the value, helps make accessing nested data a little easier.
+
+
+
+Exercise #11
+Arrow functions
+they just feel so cool.
+when you write them its like wiping your behind with silk.
+
+
+Exercise #12
+...args makes life Array.prototype.slice.call(arguments); a thing of the past
